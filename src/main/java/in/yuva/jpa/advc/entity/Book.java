@@ -1,21 +1,19 @@
 package in.yuva.jpa.advc.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 
+
+@Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Table( name = "book_details")
 public class Book {
 
+    @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
