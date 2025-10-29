@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service;
 public interface BookService {
 
     Book bookByNameAndAuthor(String name, String author);
+
+    Book bookByNameOrAuthor(String name, String author);
 }

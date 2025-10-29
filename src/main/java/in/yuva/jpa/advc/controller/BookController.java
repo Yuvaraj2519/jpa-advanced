@@ -21,7 +21,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/bookByNameAuthor")
+    @GetMapping("/bookByNameAndAuthor")
     public ResponseEntity<Book> getBooksByNameAndAuthor (
             @RequestParam String name,
             @RequestParam String author) {
@@ -31,5 +31,14 @@ public class BookController {
         log.info("Exit ing getBooksByNameAndAuthor");
 
         return ResponseEntity.ok(book);
+    }
+
+    @GetMapping("/bookByNameOrAuthor")
+    public ResponseEntity<Book> getBooksByNameOrAuthor (
+            @RequestParam String name,
+            @RequestParam String author){
+        log.info("Entering in getBooksByNameOrAuthor");
+        Book book = bookService.bookByNameOrAuthor(name, author);
+        return null;
     }
 }

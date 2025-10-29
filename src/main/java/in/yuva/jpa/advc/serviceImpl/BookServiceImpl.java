@@ -29,10 +29,24 @@ public class BookServiceImpl implements BookService {
             if (optionalBook.isPresent())
                 return optionalBook.get();
             else
-                throw new BookNotFoundException("Book name : " +name+ " is not found");
+                throw new BookNotFoundException("Book name : " +name+ " and Author name"+ author +" is not found");
         } catch (Exception e) {
             log.error(e.getMessage());
             throw new BookNotFoundException("Book name : " +name+ " is not found");
+        }
+    }
+
+    @Override
+    public Book bookByNameOrAuthor(String name, String author) {
+        try {
+            Optional<Book> optionalBook = bookRepo.findByBookNameOrAuthorName(name, author);
+            if (optionalBook.isPresent())
+                return optionalBook.get();
+            else
+                throw new BookNotFoundException("not fund");
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            throw new BookNotFoundException("not fund");
         }
     }
 }
