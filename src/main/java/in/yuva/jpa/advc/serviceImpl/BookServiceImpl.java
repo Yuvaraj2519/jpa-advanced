@@ -37,16 +37,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book bookByNameOrAuthor(String name, String author) {
-        try {
-            Optional<Book> optionalBook = bookRepo.findByBookNameOrAuthorName(name, author);
+    public Book bookById(int id) {
+        try{
+            Optional<Book> optionalBook = bookRepo.findById(id);
             if (optionalBook.isPresent())
                 return optionalBook.get();
             else
-                throw new BookNotFoundException("not fund");
-        } catch (Exception e) {
+                throw new BookNotFoundException("Book not found");
+        }catch (Exception e){
             log.error(e.getMessage());
-            throw new BookNotFoundException("not fund");
+            throw new BookNotFoundException("Book not found");
         }
     }
 }

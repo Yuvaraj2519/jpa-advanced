@@ -8,6 +8,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
 
 server:
   port: 9190
