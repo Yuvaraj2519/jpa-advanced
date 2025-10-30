@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -43,10 +44,15 @@ public class BookServiceImpl implements BookService {
             if (optionalBook.isPresent())
                 return optionalBook.get();
             else
-                throw new BookNotFoundException("Book not found");
+                throw new BookNotFoundException("Book with id "+ id +" not found");
         }catch (Exception e){
             log.error(e.getMessage());
-            throw new BookNotFoundException("Book not found");
+            throw new BookNotFoundException("Book with id "+ id +" not found");
         }
+    }
+
+    @Override
+    public List<Book> allBooks() {
+        return bookRepo.findAll();
     }
 }
